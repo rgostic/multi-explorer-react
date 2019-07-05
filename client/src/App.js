@@ -24,9 +24,17 @@ class App extends React.Component {
   render() {
 
     let myTxs = this.state.txs.map(function (tx) {
-      return <li>{tx.hash}</li>;
+      return <div>
+            <h2>Transaction</h2>
+            <h5>{tx.hash}</h5>
+            <p>{typeof parseInt(tx.time)}</p>
+            <h6>{new Date(parseInt(tx.time)*1000).toLocaleString()}</h6>
+            <p>{tx.from} -> {tx.to}</p>
+            <p>Amount: {tx.val}</p>              
+        </div>
+        ;
     });
-    
+
     return (
       <div className="App">
         <header className="App-header">        
