@@ -13,7 +13,7 @@ function start(response, queryString, postData) {
     `);  
 
   supportedCryptos().then(function (cryptos) {
-    console.dir(cryptos);
+    
     var cryptoOptions = '';
 
     cryptos.forEach(function(crypto) {
@@ -41,19 +41,28 @@ function search(response, queryString, postData) {
 }
 
 function _getAddressTransactions(response, postData, address, cryptoId) {
-	var html = '';
-  console.dir(blockchainRepo);
-  console.log(cryptoId);
-  console.log('get address transactions');
+	var html = '';  
+  
   blockchainRepo[cryptoId.toLowerCase()](address).then(function (transactions) {
+    var txsWrapped = [];
+    var txWrapped = {};
 
-    transactions.forEach(function (tx) {
-        html += '<p>Transaction Hasha: ' + tx.hash + '</p>';
-      });
+    transactions.forEach(function(tx) {
+      txWrapped = {
+        hash  : tx.hash,
+        time  : tx.timeStamp,
+        from  : tx.from,
+        to    : tx.to,
+        conf  : tx.confirmations,
+        value : tx.value 
+      };
+
+      txsWrapped.push(txWrapped);
+    });
 
     response.writeHead(200, {'Content-Type': 'application/json'});
     
-    response.write(JSON.stringify(transactions));
+    response.write(JSON.stringify(txsWrapped));
     response.end();
   });  
 }

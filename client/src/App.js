@@ -22,9 +22,11 @@ class App extends React.Component {
   
   
   render() {
+
     let myTxs = this.state.txs.map(function (tx) {
       return <li>{tx.hash}</li>;
     });
+    
     return (
       <div className="App">
         <header className="App-header">        
