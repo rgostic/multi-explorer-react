@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 //import logo from './logo.svg';
-//import './App.css';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,8 +15,7 @@ class App extends React.Component {
         console.log(res.data);
         
         this.setState( {txs: res.data} );
-      });
-    
+      });    
   }
 
   
@@ -24,21 +23,19 @@ class App extends React.Component {
   render() {
 
     let myTxs = this.state.txs.map(function (tx) {
-      return <div>
-            <h2>Transaction</h2>
-            <h5>{tx.hash}</h5>
-            <p>{typeof parseInt(tx.time)}</p>
+      return <div class="heyy">
+            <p>Transaction</p>
+            <h2>{tx.hash}</h2>            
             <h6>{new Date(parseInt(tx.time)*1000).toLocaleString()}</h6>
             <p>{tx.from} -> {tx.to}</p>
             <p>Amount: {tx.val}</p>              
-        </div>
-        ;
+        </div>;
     });
 
     return (
       <div className="App">
         <header className="App-header">        
-          <ul>{myTxs}</ul>
+          <div>{myTxs}</div>
           <p>
             
             Edit <code>src/App.js</code> and save to reload.

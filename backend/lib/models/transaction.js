@@ -5,7 +5,7 @@ const transaction = {
   to: [],
   hash: '',
   time: 0,
-  confirmations: 0,
+  conf: 0,
   amount: -1,
   blockCount: 0
 };

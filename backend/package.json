@@ -1,6 +1,10 @@
 {
+  "scripts": {
+    "start": "node ./lib/index.js"
+  },
  "dependencies": {
   "request": "",
   "promise": ""
+
  }
 }
