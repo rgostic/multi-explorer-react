@@ -1,34 +1,37 @@
+'use strict';
+
 var util = require('util');
 var blockchainRepo = require('./../blockchain-repo');
 var supportedCryptos = require('./../util/supported-cryptos');
 
-function start(response, queryString, postData) {
-	
-  // response.writeHead(200, {'Content-Type': 'text/html'});
+// DEPRICATED: Moved to react front-end
+function start(response, queryString, postData) {	
+  response.writeHead(200, {'Content-Type': 'text/html'});
 
-  // response.write(`
-  //   <form action='/search' method='GET'>
-  //     <input type='text' name='address' />
-  //     <select name='cryptoId'>
-  //   `);  
+  response.write(`
+    <form action='/search' method='GET'>
+      <input type='text' name='address' />
+      <select name='cryptoId'>
+    `);  
 
-  // supportedCryptos().then(function (cryptos) {
+  supportedCryptos().then(function (cryptos) {
     
-  //   var cryptoOptions = '';
+    var cryptoOptions = '';
 
-  //   cryptos.forEach(function(crypto) {
-  //     cryptoOptions += '<option value="' + crypto + '">' + crypto + '</option>';
-  //   });
+    cryptos.forEach(function(crypto) {
+      cryptoOptions += '<option value="' + crypto + '">' + crypto + '</option>';
+    });
 
-  //   response.write(cryptoOptions);
+    response.write(cryptoOptions);
   
-  //   response.write('</select>');
-  //   response.write('<input type="submit" value="Search" />');
-  //   response.write('</form>');
-  //   response.end();
-  // });
+    response.write('</select>');
+    response.write('<input type="submit" value="Search" />');
+    response.write('</form>');
+    response.end();
+  });
 }
 
+// TODO: API Documentation
 function search(response, queryString, postData) {
   var address = queryString.address;
   var cryptoId = queryString.cryptoId;

@@ -1,3 +1,5 @@
+'use strict';
+
 var request = require('request');
 
 function getAddressTransactions(address) {
@@ -6,9 +8,9 @@ function getAddressTransactions(address) {
                         '&startblock=0&endblock=99999999&sort=desc';
 
   return new Promise(function (resolve, object) {
-      request.get(transactionUrl, function (err, resp, body) {
-        console.log('error: ' + err);
+      request.get(transactionUrl, function (err, resp, body) {        
         if (err) {
+          console.log('error: ' + err);
           reject(err);
         }
         else {
@@ -17,6 +19,5 @@ function getAddressTransactions(address) {
     });
   });
 }
-
 
 module.exports = getAddressTransactions;

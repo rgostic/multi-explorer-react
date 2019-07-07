@@ -1,15 +1,15 @@
+'use strict';
+
 var fs = require('fs');
 
 function _isJsFile(filename) {  
   if (filename.indexOf('.js') === filename.length - 3) {
     return true;
   }
-
   return false;
 }
 
-function getCryptos() {
-  
+function getCryptos() {  
   return new Promise(function (resolve, object) {
     var cryptos = [];
 

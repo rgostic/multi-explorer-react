@@ -1,3 +1,4 @@
+'use strict';
 
 function route(handles, pathName, queryString, response, postData) {
 	console.log('routing path for ' + pathName);

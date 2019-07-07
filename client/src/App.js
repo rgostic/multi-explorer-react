@@ -23,7 +23,7 @@ class App extends React.Component {
   render() {
 
     let myTxs = this.state.txs.map(function (tx) {
-      return <div class="heyy">
+      return <div class="transaction-container">
             <p>Transaction</p>
             <h2>{tx.hash}</h2>            
             <h6>{new Date(parseInt(tx.time)*1000).toLocaleString()}</h6>
@@ -41,10 +41,7 @@ class App extends React.Component {
             Edit <code>src/App.js</code> and save to reload.
             
           
-          </p>
-          <a href="https://reactjs.org">
-            Learn React
-          </a>
+          </p>          
         </header>
       </div>
     );
